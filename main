@@ -1,0 +1,168 @@
+// Manipulação de Strings
+console.log("Manipulação de Strings:");
+let texto = "Aprendendo JavaScript é divertido e recompensador!";
+console.log("Texto em maiúsculas:", texto.toUpperCase());
+
+let contemDivertido = texto.includes("divertido");
+console.log("Texto contém 'divertido':", contemDivertido);
+
+let palavras = texto.split(" ");
+console.log("Array de palavras:", palavras);
+
+let textoComHifens = palavras.join("-");
+console.log("Texto com palavras separadas por hífens:", textoComHifens);
+
+// Operações com Números
+console.log("\nOperações com Números:");
+let num1 = 200.456;
+let num2 = 150.789;
+
+console.log("num1 arredondado:", Math.round(num1));
+console.log("Valor máximo entre num1 e num2:", Math.max(num1, num2));
+console.log("Valor mínimo entre num1 e num2:", Math.min(num1, num2));
+console.log("Raiz quadrada de num2:", Math.sqrt(num2));
+console.log("num1 em notação científica:", num1.toExponential());
+
+// Lógica Booleana e Comparações
+console.log("\nLógica Booleana e Comparações:");
+let x = 8, y = 12, z = 8;
+
+console.log("x é maior ou igual a y:", x >= y);
+console.log("x é diferente de z (usando !=):", x != z);
+console.log("x é estritamente diferente de z (usando !==):", x !== z);
+console.log("x é menor que y e z é maior que x:", x < y && z > x);
+console.log("x é igual a z ou y é menor que z:", x === z || y < z);
+
+// Trabalhando com Null, Undefined, e NaN
+console.log("\nTrabalhando com Null, Undefined, e NaN:");
+let nulo = null;
+console.log("nulo é igual a undefined (usando ==):", nulo == undefined);
+console.log("nulo é estritamente igual a undefined (usando ===):", nulo === undefined);
+
+let indefinido;
+console.log("indefinido é NaN:", isNaN(indefinido));
+
+let numStr2 = "123abc";
+console.log("Conversão de '123abc' para número é NaN:", isNaN(Number(numStr2)));
+
+// Manipulação de Arrays
+console.log("\nManipulação de Arrays:");
+let numeros = [10, 20, 30, 40, 50];
+numeros.push(60);
+console.log("Array após push:", numeros);
+
+let removido = numeros.pop();
+console.log("Valor removido pelo pop:", removido);
+console.log("Array após pop:", numeros);
+
+numeros.splice(2, 1);
+console.log("Array após splice:", numeros);
+
+numeros.sort((a, b) => b - a);
+console.log("Array ordenado em ordem decrescente:", numeros);
+
+// Manipulação de Objetos Avançada
+console.log("\nManipulação de Objetos Avançada:");
+let pessoa = {
+    nome: "João",
+    idade: 30,
+    profissao: "Desenvolvedor",
+    endereco: {
+        rua: "Rua Exemplo",
+        cidade: "São Paulo",
+        estado: "SP"
+    },
+    apresentacao: function() {
+        return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e sou ${this.profissao}.`;
+    }
+};
+
+console.log("Cidade do endereço:", pessoa.endereco.cidade);
+
+pessoa.profissao = "Gerente";
+console.log("Objeto pessoa atualizado:", pessoa);
+
+pessoa.telefone = "1234-5678";
+console.log("Objeto pessoa com telefone adicionado:", pessoa);
+
+// Funções e Escopo
+console.log("\nFunções e Escopo:");
+function soma(a, b) {
+    return a + b;
+}
+
+function ehPar(num) {
+    return num % 2 === 0;
+}
+
+function dobraValores(array) {
+    return array.map(valor => valor * 2);
+}
+
+function contaCaracteres(str) {
+    return str.length;
+}
+
+function fatorial(n) {
+    if (n === 0 || n === 1) return 1;
+    let resultado = 1;
+    for (let i = 2; i <= n; i++) {
+        resultado *= i;
+    }
+    return resultado;
+}
+
+console.log("Soma de 5 e 3:", soma(5, 3));
+console.log("O número 4 é par?", ehPar(4));
+console.log("Valores dobrados [1, 2, 3]:", dobraValores([1, 2, 3]));
+console.log("Número de caracteres em 'JavaScript':", contaCaracteres("JavaScript"));
+console.log("Fatorial de 5:", fatorial(5));
+
+// Manipulação de Datas e Horas
+console.log("\nManipulação de Datas e Horas:");
+let aniversario = new Date('2024-09-10');
+let hoje = new Date();
+let diffTempo = aniversario - hoje;
+let diffDias = Math.ceil(diffTempo / (1000 * 60 * 60 * 24));
+console.log("Diferença em dias até o próximo aniversário:", diffDias);
+
+let dataFormatada = hoje.toISOString().split('T')[0];
+console.log("Data atual no formato YYYY-MM-DD:", dataFormatada);
+
+hoje.setDate(hoje.getDate() + 30);
+console.log("Data atual mais 30 dias:", hoje.toISOString().split('T')[0]);
+
+// Trabalhando com Funções de Callback
+console.log("\nTrabalhando com Funções de Callback:");
+function executaOperacao(num1, num2, operacao) {
+    return operacao(num1, num2);
+}
+
+function somaCallback(a, b) {
+    return a + b;
+}
+
+function multiplicacaoCallback(a, b) {
+    return a * b;
+}
+
+console.log("Soma usando callback:", executaOperacao(5, 3, somaCallback));
+console.log("Multiplicação usando callback:", executaOperacao(5, 3, multiplicacaoCallback));
+
+function repetirOperacao(num, operacao) {
+    for (let i = 0; i < num; i++) {
+        console.log(`Resultado da iteração ${i + 1}:`, operacao());
+    }
+}
+
+repetirOperacao(3, () => somaCallback(2, 3));
+
+function contarOcorrencias(str, char) {
+    let count = 0;
+    Array.from(str).forEach(c => {
+        if (c === char) count++;
+    });
+    return count;
+}
+
+console.log("Número de vezes que 'a' aparece em 'JavaScript':", contarOcorrencias("JavaScript", 'a'));
